@@ -95,7 +95,7 @@ void USlicingBladeComponent::OnBeginOverlap(UPrimitiveComponent* OverlappedComp,
 	OnComponentEndOverlap.AddDynamic(this, &USlicingBladeComponent::OnEndOverlap);
 
 	// Broadcast Slicing Slicing Event Started
-	OnBeginSlicing.Broadcast(OverlappedComp->GetAttachmentRootActor(), OverlappedComp->GetOwner(), CutComponent->GetAttachmentRootActor(), GetWorld()->GetTimeSeconds());
+	OnBeginSlicing.Broadcast(OverlappedComp->GetAttachmentRootActor(), OverlappedComp->GetOwner(), CutComponent->GetOwner(), GetWorld()->GetTimeSeconds());
 
 	// Makes the Cutting with Constraints possible, by somwehat disabling Gravity and Physics in a sense without actually deactivating them.
 	CutComponent->SetLinearDamping(100.f);
@@ -182,7 +182,7 @@ void USlicingBladeComponent::SliceComponent(UPrimitiveComponent* CuttableCompone
 	TArray<FName> OriginalTags = CuttableComponent->GetOwner()->Tags;
 
 	if (ParentComponent != NULL) {
-		CuttableComponent->DetachFromParent(true);
+		CuttableComponent->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
 	}
 
 	// In case the component is a StaticMeshComponent it needs to be converted into a ProceduralMeshComponent

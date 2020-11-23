@@ -12,24 +12,24 @@ class UPhysicsConstraintComponent;
 /**
 * The delegates for events regarding the cutting-process
 */
-DECLARE_MULTICAST_DELEGATE_FourParams(	FBeginSlicingSignature, UObject* /*CuttingAgent*/,
-																UObject* /*CuttingObject*/,
-																UObject* /*CutObject*/, 
+DECLARE_MULTICAST_DELEGATE_FourParams(	FBeginSlicingSignature, AActor* /*CuttingAgent*/,
+																AActor* /*CuttingObject*/,
+																AActor* /*CutObject*/,
 																float /*Time*/);
 
-DECLARE_MULTICAST_DELEGATE_ThreeParams(	FEndSlicingOnFailSignature,	UObject* /*CuttingAgent*/,
-																	UObject* /*CutObject*/, 
+DECLARE_MULTICAST_DELEGATE_ThreeParams(	FEndSlicingOnFailSignature, AActor* /*CuttingAgent*/,
+																	AActor* /*CutObject*/,
 																	float /*Time*/);
 
-DECLARE_MULTICAST_DELEGATE_FourParams(FEndSlicingOnSuccessSignature,	UObject* /*CuttingAgent*/,
-																		UObject* /*CutObject*/,
-																		UObject* /*outputsCreated*/,
+DECLARE_MULTICAST_DELEGATE_FourParams(FEndSlicingOnSuccessSignature,	AActor* /*CuttingAgent*/,
+																		AActor* /*CutObject*/,
+																		AActor* /*outputsCreated*/,
 																		float /*Time*/);
 
-DECLARE_MULTICAST_DELEGATE_TwoParams(FObjectDestruction, UObject* /*ObjectActedOn*/, float /*Time*/);
+DECLARE_MULTICAST_DELEGATE_TwoParams(FObjectDestruction, AActor* /*ObjectActedOn*/, float /*Time*/);
 
-DECLARE_MULTICAST_DELEGATE_ThreeParams(FObjectCreation,		UObject* /*TransformedObject*/,
-															UObject* /*NewSlice*/,
+DECLARE_MULTICAST_DELEGATE_ThreeParams(FObjectCreation,		AActor* /*TransformedObject*/,
+															AActor* /*NewSlice*/,
 															float /*Time*/);
 
 UCLASS()

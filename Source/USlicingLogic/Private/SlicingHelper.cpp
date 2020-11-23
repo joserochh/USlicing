@@ -181,7 +181,7 @@ UStaticMesh* FSlicingHelper::GenerateStaticMesh(UProceduralMeshComponent* Proced
 		StaticMesh->LightingGuid = FGuid::NewGuid();
 
 		// Add source to new StaticMesh
-		FStaticMeshSourceModel* SrcModel = new (StaticMesh->SourceModels) FStaticMeshSourceModel();
+		FStaticMeshSourceModel* SrcModel = new (StaticMesh->GetSourceModels()) FStaticMeshSourceModel();
 		SrcModel->BuildSettings.bRecomputeNormals = false;
 		SrcModel->BuildSettings.bRecomputeTangents = false;
 		SrcModel->BuildSettings.bRemoveDegenerates = false;
